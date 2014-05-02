@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Streamsniper Settings</title>
+		<script type="text/jscript" language="jscript">
+		/* see /windows-gadgets/how-make-windows-gadget-windows-7 */
+		
+		function init() {
+			if (System.Gadget.Settings.read('configured') == true) {
+				twitchUser.value = System.Gadget.Settings.read('twitchUser');
+				hideOfflineChannels.checked = System.Gadget.Settings.read('hideOfflineChannels');
+			} else {
+				twitchUser.value = '';
+				hideOfflineChannels.checked = true;
+			}
+				
+			System.Gadget.onSettingsClosing = onSettingsClose;
+		}
+				
+		function onSettingsClose(event) {
+			// Save the settings if the user clicked OK.
+			if (event.closeAction == event.Action.commit) {
+				System.Gadget.Settings.write('twitchUser', twitchUser.value);
+				System.Gadget.Settings.write('hideOfflineChannels', hideOfflineChannels.checked);
+					
+				System.Gadget.Settings.write('configured', true);
+			}
+			// Allow the Settings dialog to close.
+			event.cancel = false;
+		}
+		</script>
+
+		<style>
+			body { width:180px; height:120px; margin:0px; }
+		</style>
+	</head>
+	
+	<body onload="init()">
+		Your Justin.TV Username: <input type="text" id="twitchUser" name="twitchUser" size="30" />
+		Hide offline channels: <input type="checkbox" id="hideOfflineChannels" name="hideOfflineChannels" />
+	</body>
+</html>

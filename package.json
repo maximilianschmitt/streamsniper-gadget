@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "underscore": "^1.6.0",
+    "bluebird": "^1.2.4"
+  },
+  "devDependencies": {
+    "vinyl-source-stream": "^0.1.1",
+    "gulp": "^3.6.2",
+    "browserify": "^3.44.2",
+    "gulp-uglify": "^0.2.1",
+    "gulp-if": "^1.1.0",
+    "jquery": "^1.8.2",
+    "browserify-shim": "^3.4.1",
+    "gulp-zip": "^0.3.4",
+    "run-sequence": "^0.3.6",
+    "gulp-streamify": "0.0.5"
+  },
+  "browserify-shim": {
+    "./src/js/vendor/jquery.js": "$"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "jquery": "./src/js/vendor/jquery.js"
+  }
+}
